@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yana_gaman/login.dart';
+import 'package:yana_gaman/home.dart';
 
 class GuestLogin extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class GuestLogin extends StatelessWidget {
       title:"login",
       debugShowCheckedModeBanner: false,
       home: Container(
-        color: Colors.lightGreenAccent,
+        color: Colors.white,
         child: Column(
           children: <Widget>[
             Logo(),
@@ -22,8 +23,8 @@ class GuestLogin extends StatelessWidget {
                child:Text('Sign in',
                style: TextStyle(
                  decoration: TextDecoration.none,
-                  color:Colors.white,
-                  fontWeight: FontWeight.bold,
+                  color:Colors.lightGreen[900],
+                  fontWeight: FontWeight.w900,
                   fontSize: 30.0,
                 ),
                 ),
@@ -66,6 +67,9 @@ class UserLogin extends StatelessWidget{
       width: 320.0,
       height: 40.0,
       child: OutlineButton(
+        highlightElevation: 10.0,
+        hoverColor: Colors.green[100],
+        color: Colors.lightGreen[500],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0)
         ),
@@ -77,7 +81,6 @@ class UserLogin extends StatelessWidget{
             ),
           ),
           onPressed:(){
-            //user login
           Navigator.push(context, MaterialPageRoute(
               builder: (context) =>Login()
           ));
@@ -94,22 +97,23 @@ class GuestLoginButton extends StatelessWidget{
       width: 320.0,
       height: 40.0,
       child: OutlineButton(
+        color: Colors.lightGreen[500],
         highlightElevation: 10.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0)
-          ),
-          //elevation: 7.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0)
+        ),
           child: Text("Login as a Guest",
-            style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
             ),
-
           ),
           onPressed:(){
-            //action
-
+          //home page login as a guest
+             Navigator.push(context, MaterialPageRoute(
+              builder: (context) =>Home()
+          ));
           }),
     );
   }
@@ -131,6 +135,8 @@ class _FbLogin extends State<FbLogin> {
       width: 320.0,
       height: 40.0,
       child:OutlineButton(
+        highlightElevation: 10.0,
+        color: Colors.lightGreen[500],
         shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0)
       ), 
@@ -175,10 +181,11 @@ class _GoogleLogin extends State<GoogleLogin> {
       width: 320.0,
       height: 40.0,
       child:OutlineButton(
+        highlightElevation: 10.0,
+        color: Colors.lightGreen[500],
         child:Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            
+          children: <Widget>[           
             ImageIcon(AssetImage('images/google.png')),
             SizedBox(
               width:15.0
