@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "146829383667-vk87137rsctbepovasu7abp8por5g82f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yana_gaman",
+            "certificate_hash": "7ce02dfe2cefbb5bf17a78e736eae6efd56ba0d2"
+          }
+        },
+        {
           "client_id": "146829383667-uf0evpucv45k8rgab748q9n50mqlkhla.apps.googleusercontent.com",
           "client_type": 3
         }

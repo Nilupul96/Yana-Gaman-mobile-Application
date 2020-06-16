@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yana_gaman/guestLogin.dart';
 import 'package:yana_gaman/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'home.dart';
+import 'package:yana_gaman/home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -19,11 +18,13 @@ class LoginPage extends State<Login> {
   var _formKey = GlobalKey<FormState>();
   String _email;
   String _password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: true,
           backgroundColor: Colors.lightGreen[700],
           title: Text("Login"),
         ),
@@ -69,7 +70,6 @@ class LoginPage extends State<Login> {
                             labelText: "Password",
                             hintText: 'please enter your Password',
                             prefixIcon: Icon(Icons.lock),
-                            suffixIcon: Icon(Icons.visibility),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       ),
@@ -79,18 +79,22 @@ class LoginPage extends State<Login> {
                     Container(
                       padding: EdgeInsets.only(bottom: 15.0, left: 200.0),
                       child: InkWell(
+                          onTap: () {
+                            //reset password
+                          },
                           child: Text(
-                        "Forgot password?",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                        ),
-                      )),
+                            "Forgot password?",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            ),
+                          )),
                     ),
 
                     //call to login button
                     Container(
+                      decoration: BoxDecoration(),
                       margin: EdgeInsets.only(bottom: 10.0),
                       width: 300.0,
                       height: 50.0,
@@ -148,7 +152,7 @@ class LoginPage extends State<Login> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignUp()));
+                                      builder: (context) => GuestLogin()));
                             }),
                       ),
                     )
@@ -169,7 +173,6 @@ class LoginPage extends State<Login> {
             context, MaterialPageRoute(builder: (context) => Home()));
       } catch (e) {
         print('wrong password');
-        
       }
     }
   }

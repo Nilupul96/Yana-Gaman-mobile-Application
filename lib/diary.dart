@@ -10,6 +10,7 @@ class _DiaryState extends State<Diary> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.lightGreen[700],
         title:Text("Travel Diary"),
       ),

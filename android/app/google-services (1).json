@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "7977777349",
+    "firebase_url": "https://yana-gaman.firebaseio.com",
+    "project_id": "yana-gaman",
+    "storage_bucket": "yana-gaman.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7977777349:android:b9ebab96ed5491e9ced8ac",
+        "android_client_info": {
+          "package_name": "com.example.yana_gaman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7977777349-udri68k5kgnhnas94ljlb4spm22juiie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmkcim4-W-PNeHSDaZL0lVKrD7vBh1RtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7977777349-udri68k5kgnhnas94ljlb4spm22juiie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
   
   int _currentindex =0;
   //page caller in the app
-  Widget callPage(int currentindex){
+   callPage(int currentindex){
     switch (currentindex) {
       case 0: return HomePage() ;
       case 1: return  AddPost();
@@ -27,19 +27,18 @@ class Home extends StatefulWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-     // appBar: AppBar(
-       // backgroundColor: Colors.lightGreen[700],
-        //title:Text("Yana Gama Mobile Application")
-      
-    //  ),
+    
       body: callPage(_currentindex),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.lightGreen[800],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black54,
         currentIndex: _currentindex,
         items:[
           BottomNavigationBarItem(
             icon:Icon(Icons.home),
             title: Text('Home'),
-            backgroundColor: Colors.lightGreen[700],
            
             ),
 
@@ -62,13 +61,14 @@ class Home extends StatefulWidget {
     onTap: (index){
         setState(() {
           _currentindex=index;
+          
         });
     },
 
         ),
     );
   }
-
+  
  }
   
    

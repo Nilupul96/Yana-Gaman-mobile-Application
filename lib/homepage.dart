@@ -27,10 +27,11 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           title: Text("Home"),
           backgroundColor: Colors.lightGreen[700]),
+          
       //floating Action Button
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_location),
-        backgroundColor: Colors.lightGreen[700],
+        backgroundColor: Colors.lightGreen[800],
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddPost()));
