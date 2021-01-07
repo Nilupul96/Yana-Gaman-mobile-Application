@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:yana_gaman/login.dart';
-import 'package:yana_gaman/home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:yana_gaman/myProfile.dart';
+import 'package:yana_gaman/ui/screens/home_screen.dart';
+import 'package:yana_gaman/ui/screens/login_screen.dart';
+import 'package:yana_gaman/ui/screens/profile_screen.dart';
 
 class GuestLogin extends StatefulWidget {
   @override
@@ -160,7 +160,7 @@ class _FbLogin extends State<FbLogin> {
               logInWithFacebook().whenComplete(() {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => MyProfile(),
+                    builder: (context) =>ProfileScreen(),
                   ),
                 );
               });
@@ -183,13 +183,13 @@ class _FbLogin extends State<FbLogin> {
   }
 
   //login with facebook
-   Future logInWithFacebook() async {
+  Future logInWithFacebook() async {
     var facebookLogin = FacebookLogin();
     var facebookLoginResult = await facebookLogin.logIn(['email']);
 
     final AuthCredential credential = FacebookAuthProvider.getCredential(
-      //accessToken: facebookLoginResult.accessToken.token,
-    );
+        //accessToken: facebookLoginResult.accessToken.token,
+        );
 
     final AuthResult authResult =
         await FirebaseAuth.instance.signInWithCredential(credential);
@@ -211,9 +211,7 @@ class _FbLogin extends State<FbLogin> {
         break;
     }
   }
-} 
-
-
+}
 
 // login with google acount
 class GoogleLogin extends StatefulWidget {
@@ -298,4 +296,3 @@ class _GoogleLogin extends State<GoogleLogin> {
 }
 
 //facebook signin method
- 

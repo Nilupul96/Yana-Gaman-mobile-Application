@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yana_gaman/addPost.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,14 +27,15 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           title: Text("Home"),
           backgroundColor: Colors.lightGreen[700]),
-          
+
       //floating Action Button
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_location),
         backgroundColor: Colors.lightGreen[800],
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPost()));
+          // Navigator.push(
+          // Alerts.showMessage(context, "message");
+          //     context, MaterialPageRoute(builder: (context) => AddPost()));
         },
       ),
       //image slide Show

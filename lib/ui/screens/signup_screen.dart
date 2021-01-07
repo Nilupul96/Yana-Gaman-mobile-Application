@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:yana_gaman/login.dart';
+import 'package:yana_gaman/ui/screens/login_screen.dart';
 
 class SignUp extends StatefulWidget {
   @override

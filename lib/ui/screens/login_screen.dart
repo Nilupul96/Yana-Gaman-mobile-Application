@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yana_gaman/guestLogin.dart';
-import 'package:yana_gaman/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:yana_gaman/home.dart';
+import 'package:yana_gaman/ui/screens/guestLogin.dart';
+import 'package:yana_gaman/ui/screens/home_screen.dart';
+import 'package:yana_gaman/ui/widgets/button.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -93,28 +93,11 @@ class LoginPage extends State<Login> {
                     ),
 
                     //call to login button
-                    Container(
-                      decoration: BoxDecoration(),
-                      margin: EdgeInsets.only(bottom: 10.0),
-                      width: 300.0,
-                      height: 50.0,
-                      child: RaisedButton(
-                          color: Colors.lightGreen[700],
-                          elevation: 6.0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0)),
-                          child: Text(
-                            "LOGIN",
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          onPressed: () {
-                            logIn();
-                            //action
-                          }),
-                    ),
+                    GestureDetector(
+                        child: Button(
+                          buttonName: "Login",
+                        ),
+                        onTap: () => logIn()),
 
                     //signup text
                     Container(
@@ -129,32 +112,14 @@ class LoginPage extends State<Login> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    //signup button
-                    Container(
-                      width: 180.0,
-                      height: 40.0,
-                      margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                      child: Container(
-                        child: RaisedButton(
-                            color: Colors.lightGreen[800],
-                            elevation: 6.0,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25.0)),
-                            child: Text(
-                              "SIGNUP",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                            onPressed: () {
-                              //action
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => GuestLogin()));
-                            }),
+                    GestureDetector(
+                      child: Button(
+                        buttonName: "Sign Up",
                       ),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GuestLogin())),
                     )
                   ],
                 ),
