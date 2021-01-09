@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yana_gaman/styles.dart';
 import 'package:yana_gaman/ui/screens/home_screen.dart';
-
+import 'package:yana_gaman/ui/screens/login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +30,6 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 
         // },
         debugShowCheckedModeBanner: false,
-        home: Home());
+        home: Login());
   }
 }

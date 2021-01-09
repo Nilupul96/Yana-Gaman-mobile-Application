@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:yana_gaman/styles.dart';
-
 
 class Button extends StatelessWidget {
   final String buttonName;
@@ -16,7 +14,7 @@ class Button extends StatelessWidget {
           // margin: EdgeInsets.symmetric(horizontal: 26),
           alignment: AlignmentDirectional.bottomStart,
           decoration: BoxDecoration(
-            color: DefaultColor,
+            color: Colors.lightGreen[700],
             borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
           child: Center(

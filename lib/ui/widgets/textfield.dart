@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../styles.dart';
@@ -55,7 +54,7 @@ class CustomTextField extends StatelessWidget {
       height: 52.0,
       margin: EdgeInsets.only(bottom: 10.0),
       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0.0),
-      decoration: cardDecoration,
+      // decoration: cardDecoration,
       child: TextFormField(
         style: TextStyle(fontSize: 16.0),
         maxLines: maxLine,

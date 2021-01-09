@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:yana_gaman/ui/screens/login_screen.dart';
+import 'package:yana_gaman/ui/widgets/button.dart';
+import 'package:yana_gaman/ui/widgets/textfield.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -11,103 +13,84 @@ class SignUp extends StatefulWidget {
 
 class SignUpPage extends State<SignUp> {
   var _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  TextEditingController _username = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.lightGreen[700],
-          title: Text("SignUp"),
+          title: Text("Sign Up"),
           actions: <Widget>[],
         ),
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 50.0,
-                  ),
-
-                  Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 16.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) =>
-                            value.isEmpty ? 'please enter Email address' : null,
-                            onSaved: (value)=>_email=value,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email),
-                            labelText: 'Email',
-                            hintText: 'Please enter valid Email adrees',
-                            enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.lightGreen[700])),
-                            border: OutlineInputBorder()),
-                      )),
-
-                  // password
-                  Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 16.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                        validator: (value) =>
-                            value.isEmpty ? 'please enter password' : null,
-                            onSaved: (value)=>_password=value,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            labelText: 'Password',
-                            enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.lightGreen[700])),
-                            border: OutlineInputBorder()),
-                      )),
-                  //Confirm Password
-
-                /*  Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 16.0, horizontal: 16.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                        validator: (value) =>
-                            value.isEmpty ? 'please confirm password' : null,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            labelText: 'Confirm Password',
-                            enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.lightGreen[700])),
-                            border: OutlineInputBorder()),
-                      )),
-                      */
-                  //signup button
-                  Container(
-                    width: 200.0,
-                    height: 50.0,
-                    child: RaisedButton(
-                        color: Colors.lightGreen[700],
-                        elevation: 6.0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.0)),
-                        child: Text(
-                          "SIGNUP",
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900),
-                        ),
-                        onPressed: () {
-                          signUp();
-                        }),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 50.0,
+                    ),
+                    CustomTextField(
+                      controller: _username,
+                      labelText: "Username",
+                    ),
+                    CustomTextField(
+                      controller: _email,
+                      labelText: "Email",
+                    ),
+                    CustomTextField(
+                      controller: _username,
+                      labelText: "Password",
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    GestureDetector(
+                      child: Button(
+                        buttonName: "Sign UP",
+                      ),
+                      onTap: () => signUp(),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      height: 20.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Already have a account',
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                color: Colors.grey,
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          InkWell(
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => Login())),
+                            child: Text(
+                              ' Log In ',
+                              style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  color: Colors.blue,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               //)
             ),
@@ -121,7 +104,7 @@ class SignUpPage extends State<SignUp> {
     if (formState.validate()) {
       try {
         FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: _email, password: _password);
+            email: _email.text, password: _password.text);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Login()));
       } catch (e) {

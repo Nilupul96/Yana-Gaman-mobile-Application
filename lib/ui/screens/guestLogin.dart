@@ -23,7 +23,10 @@ class _GuestLogin extends State<GuestLogin> {
         color: Colors.white,
         child: Column(
           children: <Widget>[
-            Logo(),
+            Container(
+                height: 250.0,
+                padding: EdgeInsets.only(top: 30.0),
+                child: Center(child: Image.asset("assets/images/logo1.png"))),
             //sign in text
             Container(
               width: 500.0,
@@ -50,20 +53,6 @@ class _GuestLogin extends State<GuestLogin> {
         ),
       ),
     );
-  }
-}
-
-//upper logo
-class Logo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('images/logo1.png');
-    Image image = Image(image: assetImage);
-
-    return Container(
-        height: 250.0,
-        padding: EdgeInsets.only(top: 30.0),
-        child: Center(child: image));
   }
 }
 
@@ -160,7 +149,7 @@ class _FbLogin extends State<FbLogin> {
               logInWithFacebook().whenComplete(() {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) =>ProfileScreen(),
+                    builder: (context) => ProfileScreen(),
                   ),
                 );
               });
