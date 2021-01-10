@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:yana_gaman/styles.dart';
 import 'package:yana_gaman/ui/screens/editProfile_screen.dart';
 import 'package:yana_gaman/ui/screens/point_screen.dart';
+import 'package:yana_gaman/ui/widgets/button.dart';
 import 'package:yana_gaman/ui/widgets/confirmationDialog.dart';
 import 'package:yana_gaman/ui/widgets/pointCard.dart';
+import 'package:yana_gaman/ui/widgets/post_list_item.dart';
 import 'package:yana_gaman/ui/widgets/profilePicture.dart';
 import 'package:yana_gaman/ui/widgets/progressView.dart';
+import 'package:yana_gaman/utils/alerts.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -54,10 +57,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-
-        // automaticallyImplyLeading: true,
-        title: Text("My Profile", style: HeaderStyle),
+        backgroundColor: Colors.lightGreen[700],
+        title: Text("My Profile"),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Center(
+                child: Icon(Icons.exit_to_app, color: Colors.white, size: 30)),
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -65,31 +73,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Column(
                 children: [
-                  Container(height: 112.0, color: DefaultColor),
+                  Container(height: 112.0, color: Colors.lightGreen[300]),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: 282.0,
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: EdgeInsets.all(20.0),
+                    // height: 282.0,
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
                       BoxShadow(color: ShadowColor, blurRadius: 6.0)
                     ]),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        SizedBox(height: 46.0),
-                        Text(_isLoading ? 'Hi' : 'Hi ' + firstName,
-                            textAlign: TextAlign.center,
+                        SizedBox(
+                          height: 40.0,
+                        ),
+                        Text('Username :Nilupul',
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                                 fontFamily: DefaultFont,
                                 color: Color(0XFF3B3B3A),
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 16.0)),
                         SizedBox(height: 10.0),
-                        Container(
-                          height: 1.7,
-                          color: Color(0XFFEFEFF0),
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 13),
-                        ),
+                        Text('Email :nilupulisurujith96@gmail.com',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontFamily: DefaultFont,
+                                color: Color(0XFF3B3B3A),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0)),
+                        SizedBox(height: 10.0),
+                        Text('Hometown :Ratnapura',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontFamily: DefaultFont,
+                                color: Color(0XFF3B3B3A),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0)),
+                        SizedBox(height: 10.0),
+                        Text('Bio :love to be traveller',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontFamily: DefaultFont,
+                                color: Color(0XFF3B3B3A),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0)),
+                        SizedBox(height: 20.0),
+                        _findOutMoreButton("routeName"),
                       ],
                     ),
                   ),
@@ -130,7 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       image: DecorationImage(
                           image: profilePic != null
                               ? NetworkImage(profilePic)
-                              : AssetImage("assets/images/prof.png"),
+                              : AssetImage("assets/images/myPro.png"),
                           fit: BoxFit.cover),
                       boxShadow: [
                         BoxShadow(
@@ -154,7 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           backgroundColor: Colors.white,
                           child: CircleAvatar(
                             radius: 10.0,
-                            backgroundColor: DefaultColor,
+                            backgroundColor: Colors.lightGreen[700],
                             child: Icon(
                               Icons.mode_edit,
                               color: Colors.white,
@@ -168,10 +199,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           )))),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text('My post list',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    fontFamily: DefaultFont,
+                    color: Color(0XFF3B3B3A),
+                    fontWeight: FontWeight.w800,
+                    fontSize: 17.0)),
+          ),
+          SizedBox(height: 10.0),
+          _myPostLsit()
         ],
       ),
     );
   }
+
+  Widget _myPostLsit() {
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (buildContext, index) {
+          return Stack(
+            children: [
+              PostLitTile(
+                title: "Bopath Falls",
+                description: smapleText,
+                rating: 4.0,
+                name: "Nilupul",
+              ),
+              Positioned(
+                  right: 10.0,
+                  top: 0.0,
+                  child: GestureDetector(
+                    onTap: () {
+                      print("object");
+                      Alerts.showConfirmation(
+                          context,
+                          "Do you want to remove post",
+                          "Are you sure?",
+                          "Yes",
+                          "No",
+                          onPositiveCallback,
+                          onNegativeCallback);
+                    },
+                    child: CircleAvatar(
+                      radius: 15.0,
+                      backgroundColor: Colors.red,
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  )),
+            ],
+          );
+        });
+  }
+
+  onPositiveCallback() {}
+  onNegativeCallback() {}
 
   Widget _findOutMoreButton(String routeName) {
     return GestureDetector(
@@ -182,9 +272,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         decoration: BoxDecoration(
             boxShadow: [BoxShadow(color: ShadowColor, blurRadius: 6.0)],
             borderRadius: BorderRadius.circular(6.0),
-            color: DefaultColor),
+            color: Colors.lightGreen[700]),
         child: Center(
-          child: Text('Find Out More',
+          child: Text('Edit Profile',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -192,14 +282,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       onTap: () => {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => PointScreen(
-                // userTypeName: userPointList.tier.name,
-                // points: userPointList.points,
-                // startPoints: userPointList.tier.pointsStart,
-                // endPoints: userPointList.tier.pointsEnd,
-                // tierPoints: userPointList.tierPoints,
-                )))
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => EditProfileScreen()))
       },
     );
   }

@@ -22,8 +22,8 @@ class _HomeState extends State<Home> {
       body: _children[_currentindex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: DefaultColor,
+        backgroundColor: Colors.lightGreen[700],
+        selectedItemColor: Colors.white,
         unselectedItemColor: Colors.black54,
         currentIndex: _currentindex,
         items: [

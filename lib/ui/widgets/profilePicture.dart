@@ -38,8 +38,10 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 child: CircleAvatar(
                   backgroundImage: proPic == null
                       ? (_firstName != null && _lastName != null)
-                          ? AssetImage("assets/images/proPic.png")
-                          : AssetImage("assets/images/proPic.png")
+                          ? AssetImage(
+                              'assets/images/myPro.png',
+                            )
+                          : AssetImage('assets/images/myPro.png')
                       : NetworkImage(proPic),
                   radius: 15.0,
                   backgroundColor: Colors.grey[200],

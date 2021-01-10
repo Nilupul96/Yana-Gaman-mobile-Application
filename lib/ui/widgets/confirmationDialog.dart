@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yana_gaman/styles.dart';
 import 'package:yana_gaman/ui/screens/home_screen.dart';
-
+import 'package:yana_gaman/ui/widgets/button.dart';
 
 class ShowDialog extends StatefulWidget {
   final String btnName;
@@ -38,7 +38,7 @@ class _ShowDialogState extends State<ShowDialog> {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0)),
-            ),
+            ), 
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
@@ -76,16 +76,8 @@ class _ShowDialogState extends State<ShowDialog> {
                     height: 40.0,
                   ),
                   GestureDetector(
-                      child: SizedBox(
-                        height: 57.0,
-                        child: Container(
-                          alignment: AlignmentDirectional.bottomStart,
-                          decoration: buttonDecoration,
-                          child: Center(
-                            child: Text('${widget.btnName}',
-                                style: Theme.of(context).textTheme.button),
-                          ),
-                        ),
+                      child: Button(
+                        buttonName: widget.btnName,
                       ),
                       onTap: () {
                         if (widget.actionId == 1) {

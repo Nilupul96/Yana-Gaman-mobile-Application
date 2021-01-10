@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const DefaultColor = Color(0xff007C85);
+const DefaultColor = Color(0XFF689F38);
 const ShadowColor = Color(0xffE4E4E4);
 const GrayColor = Color(0xFFf4f3f0);
 const GoldColor = Color(0XFFD9B348);
@@ -87,7 +87,7 @@ Border defaultBorder = Border.all(
 );
 
 const buttonDecoration = BoxDecoration(
-  color: DefaultColor,
+  color: Color(0XFF689F38),
   boxShadow: [
     BoxShadow(
       color: Color(0XFFfcfcfa),
@@ -139,4 +139,4 @@ const cancleButtonDecoration = BoxDecoration(
   ),
 );
 String smapleText =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper diam eu elit finibus, in malesuada orci accumsan. Quisque congue magna quis malesuada blandit. Donec erat diam, pellentesque sit amet semper a, ultrices non lorem. Mauris vitae fermentum leo. Suspendisse iaculis tristique dignissim. In porttitor justo at commodo tristique. Nunc ultricies convallis ante eget scelerisque. Nunc dapibus interdum arcu, nec pellentesque tellus egestas vitae.";
+    "Bopath Ella is a waterfall situated in the Ratnapura District of Sri Lanka. It has a shape very similar to the leaf of the Sacred fig or  tree, which has earned it this name. The waterfall is a major tourist attraction in the country.";

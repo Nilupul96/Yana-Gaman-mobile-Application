@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ProgressView extends StatefulWidget {
   final _ProgressViewState _progressViewState = _ProgressViewState();
@@ -30,14 +31,14 @@ class _ProgressViewState extends State<ProgressView> {
           width: widget.small ? 40 : 90,
           height: widget.small ? 40 : 90,
 
-          child: Image.asset(
-            "asset/images/preLoader.gif",
-            height: widget.small ? 40 : 90,
-            width: widget.small ? 40 : 90,
-          ),
+          // child: Image.asset(
+          //   "assets/images/logo1.gif",
+          //   height: widget.small ? 40 : 90,
+          //   width: widget.small ? 40 : 90,
+          // ),
 
-          //  SpinKitCircle(
-          //     color: DefaultColor, size: widget.small ? 30 : 60),
+          child: SpinKitCircle(
+              color: Colors.lightGreen[700], size: widget.small ? 30 : 60),
         ),
       ),
     );
